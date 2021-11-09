@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 
 <Content xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../template.xsd">
-    <styles>
+    <Styles>
         <linearGradient id="rarity" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" style="stop-color:rgb(192,55,38);stop-opacity:1"/>
             <stop offset="0.125" style="stop-color:rgb(192,55,38);stop-opacity:1"/>
             <stop offset="0.5" style="stop-color:rgb(241,142,30);stop-opacity:1"/>
             <stop offset="0.875" style="stop-color:rgb(192,55,38);stop-opacity:1"/>
             <stop offset="1" style="stop-color:rgb(192,55,38);stop-opacity:1"/>
-            <conditions>
+            <Conditions>
                 <IsEquals key="rarity" value="mythic"/>
-            </conditions>
+            </Conditions>
         </linearGradient>
         <linearGradient id="rarity" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" style="stop-color:rgb(146,116,67);stop-opacity:1"/>
@@ -18,9 +18,9 @@
             <stop offset="0.5" style="stop-color:rgb(211,178,108);stop-opacity:1"/>
             <stop offset="0.875" style="stop-color:rgb(146,116,67);stop-opacity:1"/>
             <stop offset="1" style="stop-color:rgb(146,116,67);stop-opacity:1"/>
-            <conditions>
+            <Conditions>
                 <IsEquals key="rarity" value="rare"/>
-            </conditions>
+            </Conditions>
         </linearGradient>
         <linearGradient id="rarity" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" style="stop-color:rgb(76, 56, 106);stop-opacity:1"/>
@@ -28,9 +28,9 @@
             <stop offset="0.5" style="stop-color:rgb(201, 173, 221);stop-opacity:1"/>
             <stop offset="0.875" style="stop-color:rgb(76, 56, 106);stop-opacity:1"/>
             <stop offset="1" style="stop-color:rgb(76, 56, 106);stop-opacity:1"/>
-            <conditions>
+            <Conditions>
                 <IsEquals key="rarity" value="special"/>
-            </conditions>
+            </Conditions>
         </linearGradient>
         <linearGradient id="rarity" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" style="stop-color:rgb(98,110,119);stop-opacity:1"/>
@@ -38,35 +38,35 @@
             <stop offset="0.5" style="stop-color:rgb(196,222,238);stop-opacity:1"/>
             <stop offset="0.875" style="stop-color:rgb(98,110,119);stop-opacity:1"/>
             <stop offset="1" style="stop-color:rgb(98,110,119);stop-opacity:1"/>
-            <conditions>
+            <Conditions>
                 <IsEquals key="rarity" value="uncommon"/>
-            </conditions>
+            </Conditions>
         </linearGradient>
         <linearGradient id="rarity" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" style="stop-color:rgb(0,0,0);stop-opacity:1"/>
-            <conditions>
+            <Conditions>
                 <IsEquals key="rarity" value="common"/>
-            </conditions>
+            </Conditions>
         </linearGradient>
         <linearGradient id="rarity-outline" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" style="stop-color:rgb(255,255,255);stop-opacity:1"/>
-            <conditions>
+            <Conditions>
                 <Or>
                     <IsEquals key="rarity" value="common"/>
                     <IsEquals key="rarity" value="special"/>
                 </Or>
-            </conditions>
+            </Conditions>
         </linearGradient>
         <linearGradient id="rarity-outline" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" style="stop-color:rgb(0,0,0);stop-opacity:1"/>
-            <conditions>
+            <Conditions>
                 <Not>
                     <Or>
                         <IsEquals key="rarity" value="common"/>
                         <IsEquals key="rarity" value="special"/>
                     </Or>
                 </Not>
-            </conditions>
+            </Conditions>
         </linearGradient>
-    </styles>
+    </Styles>
 </Content>
