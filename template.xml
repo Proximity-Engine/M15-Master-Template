@@ -78,6 +78,34 @@
                             <IsPresent key="frame_effects.nyxtouched"/>
                         </Conditions>
                     </Selector>
+                    <Selector id="snow">
+                        <Image id="artifact">
+                            <Conditions>
+                                <IsPresent key="proximity.mtg.types.artifact"/>
+                                <IsPresent key="proximity.mtg.types.land" value="false"/>
+                            </Conditions>
+                        </Image>
+                        <Image id="land">
+                            <Conditions>
+                                <IsPresent key="proximity.mtg.types.land"/>
+                            </Conditions>
+                        </Image>
+                        <Image id="colored" src="$join{colors}">
+                            <Conditions>
+                                <Or>
+                                    <IsEquals key="proximity.mtg.color_count" value="1"/>
+                                </Or>
+                            </Conditions>
+                        </Image>
+                        <Image id="gold">
+                            <Conditions>
+                                <Range key="proximity.mtg.color_count" min="2"/>
+                            </Conditions>
+                        </Image>
+                        <Conditions>
+                            <IsPresent key="proximity.mtg.types.snow"/>
+                        </Conditions>
+                    </Selector>
                     <Selector id="standard">
                         <Image id="vehicle">
                             <Conditions>
@@ -442,6 +470,7 @@
                                 <Conditions>
                                     <IsEquals key="colorless_artifact"/>
                                     <IsPresent key="proximity.mtg.types.land" value="false"/>
+                                    <IsPresent key="proximity.mtg.types.snow" value="false"/>
                                 </Conditions>
                             </Image>
                             <Image id="colorless">
