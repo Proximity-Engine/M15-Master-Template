@@ -978,13 +978,13 @@
                         </Text>
                     </Main>
                     <Flex id="types">
-                        <Text x="345" y="4000" value="${proximity.mtg.flipped.proximity.mtg.Main_types}">
+                        <Text x="345" y="4000" value="${proximity.mtg.flipped.proximity.mtg.main_types}">
                             <Style font="Beleren2016-Bold" color="#FFFFFF" size="100"/>
                             <Conditions>
                                 <IsEquals key="proximity.front_face"/>
                             </Conditions>
                         </Text>
-                        <Text x="345" y="4000" value="${proximity.mtg.flipped.proximity.mtg.Main_types}">
+                        <Text x="345" y="4000" value="${proximity.mtg.flipped.proximity.mtg.main_types}">
                             <Style font="Beleren2016-Bold" color="#000000" size="100"/>
                             <Conditions>
                                 <IsEquals key="proximity.mtg.front_face" value="false"/>
