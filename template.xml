@@ -5,21 +5,26 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Proximity-Engine/Proximity/0.5.0/template.xsd">
     <Options>
-        <ToggleOption id="bottom_text_Outline" default="false"/>
+        <!-- Outline the text at the bottom of the card (copyright, artist credit, etc.) -->
+        <ToggleOption id="bottom_text_outline" default="false"/>
+        <!-- Whether or not to render flavor text -->
         <ToggleOption id="copyright" default="true"/>
+        <!-- Whether or not to render the copyright text -->
         <ToggleOption id="flavor_text" default="true"/>
+        <!-- Whether or not to render the flavor bar -->
         <ToggleOption id="flavor_bar" default="true"/>
         <ToggleOption id="show_set_symbol" default="true"/>
         <!--
         The hex code of the color to use for the border. Shorthands:
-        * "black"  - The standard black border (#000000)
-        * "white"  - The standard white border (#FFFFFF)
-        * "gold"   - The gold border used for promotional cards (#A6874B)
-        * "silver" - The silver border used for un-cards (#A1AEB6)
+        "black"  - The standard black border (#000000)
+        "white"  - The standard white border (#FFFFFF)
+        "gold"   - The gold border used for promotional cards (#A6874B)
+        "silver" - The silver border used for un-cards (#A1AEB6)
          -->
         <StringOption id="border" default="${border_color}"/>
-        <StringOption id="set_symbol"/>
-        <StringOption id="watermark"/>
+        <!-- Allows you to easily set the set symbol independently of the set code used at the bottom of the card -->
+        <StringOption id="set_symbol" default="${set}"/>
+        <StringOption id="watermark" default="${watermark}"/>
     </Options>
     <Imports>
         <Import src="symbols"/>
@@ -713,9 +718,6 @@
                     </Conditions>
                 </Group>
                 <Effect id="watermarks" name="brightness" amount="-15%">
-                    <CardModifier key="watermark" value="${proximity.options.watermark}">
-                        <IsPresent key="proximity.options.watermark"/>
-                    </CardModifier>
                     <Mask>
                         <Selector>
                             <Image src="${watermark}">
@@ -882,7 +884,7 @@
                     <Style color="#FFFFFF">
                         <Outline color="#000000" weight="10"/>
                         <Conditions>
-                            <IsEquals key="proximity.mtg.options.bottom_text_Outline"/>
+                            <IsEquals key="proximity.mtg.options.bottom_text_outline"/>
                         </Conditions>
                     </Style>
                     <Style color="#FFFFFF"/>
