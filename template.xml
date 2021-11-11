@@ -5,17 +5,19 @@
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/Proximity-Engine/Proximity/0.5.0/template.xsd">
     <Options>
-        <Enumeration id="border" default="black">
-            <EnumerationValue value="black"/>
-            <EnumerationValue value="gold" id="gold"/>
-            <EnumerationValue value="silver"/>
-            <EnumerationValue value="none"/>
-        </Enumeration>
         <ToggleOption id="bottom_text_Outline" default="false"/>
         <ToggleOption id="copyright" default="true"/>
         <ToggleOption id="flavor_text" default="true"/>
         <ToggleOption id="flavor_bar" default="true"/>
         <ToggleOption id="show_set_symbol" default="true"/>
+        <!--
+        The hex code of the color to use for the border. Shorthands:
+        * "black"  - The standard black border (#000000)
+        * "white"  - The standard white border (#FFFFFF)
+        * "gold"   - The gold border used for promotional cards (#A6874B)
+        * "silver" - The silver border used for un-cards (#A1AEB6)
+         -->
+        <StringOption id="border" default="${border_color}"/>
         <StringOption id="set_symbol"/>
         <StringOption id="watermark"/>
     </Options>
@@ -303,32 +305,60 @@
                         </Branches>
                     </Fork>
                 </Selector>
-                <Fork id="border">
-                    <Fork>
-                        <Image src="${proximity.options.border}"/>
-                        <Branches>
-                            <Branch id="legendary">
-                                <IsPresent key="proximity.mtg.types.legendary"/>
-                            </Branch>
-                            <Branch id="standard"/>
-                        </Branches>
-                    </Fork>
-                    <Branches>
-                        <Branch id="mdfc">
-                            <IsEquals key="layout" value="modal_dfc"/>
-                        </Branch>
-                        <Branch id="transform">
-                            <IsEquals key="layout" value="transform"/>
-                            <IsEquals key="proximity.mtg.front_face"/>
-                        </Branch>
-                        <Branch id="standard"/>
-                    </Branches>
+                <Group id="border">
+                    <Rectangle width="3288" height="4488" color="${proximity.options.border}">
+                        <AttributeModifier name="color" value="#FF000000">
+                            <IsEquals key="proximity.options.border" value="black"/>
+                        </AttributeModifier>
+                        <AttributeModifier name="color" value="#FFFFFFFF">
+                            <IsEquals key="proximity.options.border" value="white"/>
+                        </AttributeModifier>
+                        <AttributeModifier name="color" value="#FFA1AEB6">
+                            <IsEquals key="proximity.options.border" value="silver"/>
+                        </AttributeModifier>
+                        <AttributeModifier name="color" value="#FFA6874B">
+                            <IsEquals key="proximity.options.border" value="gold"/>
+                        </AttributeModifier>
+                        <Mask>
+                            <Fork>
+                                <Selector>
+                                    <Image id="legendary">
+                                        <Conditions>
+                                            <IsPresent key="proximity.mtg.types.legendary"/>
+                                        </Conditions>
+                                    </Image>
+                                    <Image id="standard"/>
+                                </Selector>
+                                <Branches>
+                                    <Branch id="mdfc">
+                                        <IsEquals key="layout" value="modal_dfc"/>
+                                    </Branch>
+                                    <Branch id="transform">
+                                        <IsEquals key="layout" value="transform"/>
+                                        <IsEquals key="proximity.mtg.front_face"/>
+                                    </Branch>
+                                    <Branch id="standard"/>
+                                </Branches>
+                            </Fork>
+                        </Mask>
+                    </Rectangle>
+                    <Group id="overlay">
+                        <Selector>
+                            <Image id="legendary">
+                                <Conditions>
+                                    <IsPresent key="proximity.mtg.types.legendary"/>
+                                </Conditions>
+                            </Image>
+                            <Image id="standard"/>
+                        </Selector>
+                        <Image id="bottom"/>
+                    </Group>
                     <Conditions>
                         <Not>
                             <IsEquals key="proximity.options.border" value="none"/>
                         </Not>
                     </Conditions>
-                </Fork>
+                </Group>
                 <Fork id="crowns">
                     <Selector>
                         <Image id="colored" src="$join{colors}">
