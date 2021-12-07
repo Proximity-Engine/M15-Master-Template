@@ -596,12 +596,12 @@
                         </Selector>
                     </Flex>
                 </SquishBox>
-                <Text id="flipped.power_and_toughness" x="2925" y="3790" alignment="right" value="${proximity.flipped.power}/${proximity.flipped.toughness}">
+                <Text id="flipped.power_and_toughness" x="2925" y="3790" alignment="right" value="${proximity.mtg.flipped.power}/${proximity.mtg.flipped.toughness}">
                     <Style font="Beleren2016-Bold" color="#494949" size="100"/>
                     <Conditions>
                         <IsPresent key="layout"/>
                         <IsEquals key="layout" value="transform"/>
-                        <IsPresent key="proximity.mtg.flipped.proximity.types.creature"/>
+                        <IsPresent key="proximity.mtg.flipped.proximity.mtg.types.creature"/>
                         <IsEquals key="proximity.mtg.front_face"/>
                     </Conditions>
                 </Text>
@@ -949,6 +949,7 @@
                                 <Or>
                                     <IsPresent key="frame_effects.sunmoondfc"/>
                                     <IsEquals key="set" value="mid"/>
+                                    <IsEquals key="set" value="vow"/>
                                 </Or>
                                 <IsEquals key="proximity.mtg.front_face"/>
                             </Conditions>
@@ -958,6 +959,7 @@
                                 <Or>
                                     <IsPresent key="frame_effects.sunmoondfc"/>
                                     <IsEquals key="set" value="mid"/>
+                                    <IsEquals key="set" value="vow"/>
                                 </Or>
                                 <IsEquals key="proximity.mtg.front_face" value="false"/>
                             </Conditions>
