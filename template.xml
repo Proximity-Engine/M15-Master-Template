@@ -348,14 +348,22 @@
                         </Mask>
                     </Rectangle>
                     <Group id="overlay">
-                        <Selector>
-                            <Image id="legendary">
-                                <Conditions>
-                                    <IsPresent key="proximity.mtg.types.legendary"/>
-                                </Conditions>
-                            </Image>
-                            <Image id="standard"/>
-                        </Selector>
+                        <Fork>
+                            <Selector>
+                                <Image id="legendary">
+                                    <Conditions>
+                                        <IsPresent key="proximity.mtg.types.legendary"/>
+                                    </Conditions>
+                                </Image>
+                                <Image id="standard"/>
+                            </Selector>
+                            <Branches>
+                                <Branch id="mdfc">
+                                    <IsEquals key="layout" value="modal_dfc"/>
+                                </Branch>
+                                <Branch id="standard"/>
+                            </Branches>
+                        </Fork>
                         <Image id="bottom"/>
                     </Group>
                     <Conditions>
@@ -564,6 +572,9 @@
                                 <Style font="NDPMTG" size="175">
                                     <Shadow color="#000000" dX="-4" dY="11"/>
                                 </Style>
+                                <Conditions>
+                                    <IsPresent key="mana_cost"/>
+                                </Conditions>
                             </Text>
                         </HorizontalLayout>
                     </Main>
@@ -1006,23 +1017,43 @@
                     </Group>
                 </Group>
                 <SquishBox id="flipped">
-                    <Main id="cost">
-                        <Text x="1435" y="4000" alignment="right" value="${proximity.mtg.flipped.mana_cost}">
-                            <Style font="NDPMTG" size="125"/>
-                        </Text>
+                    <Main>
+                        <Selector>
+                            <Text x="1435" y="4000" alignment="right" value="${proximity.mtg.flipped.mana_cost}">
+                                <Style font="NDPMTG" size="125"/>
+                                <Conditions>
+                                    <IsPresent key="proximity.mtg.flipped.proximity.mtg.types.land" value="false"/>
+                                </Conditions>
+                            </Text>
+                            <Text x="1435" y="4000" alignment="right" value="$oracle_text{proximity.mtg.flipped.proximity.mtg.mana_ability}">
+                                <Style font="MPlantin" color="#FFFFFF" size="100">
+                                    <Conditions>
+                                        <IsEquals key="proximity.mtg.front_face"/>
+                                    </Conditions>
+                                </Style>
+                                <Style font="MPlantin" color="#000000" size="100">
+                                    <Conditions>
+                                        <IsEquals key="proximity.mtg.front_face" value="false"/>
+                                    </Conditions>
+                                </Style>
+                                <Conditions>
+                                    <IsPresent key="proximity.mtg.flipped.proximity.mtg.mana_ability"/>
+                                </Conditions>
+                            </Text>
+                        </Selector>
                     </Main>
                     <Flex id="types">
                         <Text x="345" y="4000" value="${proximity.mtg.flipped.proximity.mtg.main_types}">
-                            <Style font="Beleren2016-Bold" color="#FFFFFF" size="100"/>
-                            <Conditions>
-                                <IsEquals key="proximity.front_face"/>
-                            </Conditions>
-                        </Text>
-                        <Text x="345" y="4000" value="${proximity.mtg.flipped.proximity.mtg.main_types}">
-                            <Style font="Beleren2016-Bold" color="#000000" size="100"/>
-                            <Conditions>
-                                <IsEquals key="proximity.mtg.front_face" value="false"/>
-                            </Conditions>
+                            <Style font="Beleren2016-Bold" color="#FFFFFF" size="100">
+                                <Conditions>
+                                    <IsEquals key="proximity.mtg.front_face"/>
+                                </Conditions>
+                            </Style>
+                            <Style font="Beleren2016-Bold" color="#000000" size="100">
+                                <Conditions>
+                                    <IsEquals key="proximity.mtg.front_face" value="false"/>
+                                </Conditions>
+                            </Style>
                         </Text>
                     </Flex>
                     <Conditions>
