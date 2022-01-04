@@ -329,7 +329,7 @@
                                     <IsEquals key="hollow_crown" value="true"/>
                                 </Conditions>
                             </Image>
-                            <Rectangle width="3288" height="4488"/>
+                            <Rectangle width="3288" height="4488" color="#FF000000"/>
                         </Selector>
                     </Mask>
                 </Selector>
