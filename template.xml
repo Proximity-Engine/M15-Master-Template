@@ -14,6 +14,10 @@
         <!-- Whether or not to render the flavor bar -->
         <ToggleOption id="flavor_bar" default="true"/>
         <ToggleOption id="show_set_symbol" default="true"/>
+        <!-- Uses the cards set symbol as a watermark -->
+        <ToggleOption id="set_symbol_watermark" default="false"/>
+        <!-- If true, the set symbol watermark above will override any existing watermarks the card may have -->
+        <ToggleOption id="set_symbol_overrides_existing_watermark" default="false"/>
         <!--
         The hex code of the color to use for the border. Shorthands:
         "black"  - The standard black border (#000000)
@@ -44,7 +48,7 @@
     </ConditionDefinitions>
     <Resources>
         <Resource type="assets" location="https://hephaestus.dev/proximity/resources/set_symbols" version="1.0.0"/>
-        <Resource type="assets" location="https://raw.githubusercontent.com/Proximity-Engine/M15-Master-Template" version="1.0.6"/>
+        <Resource type="assets" location="https://raw.githubusercontent.com/Proximity-Engine/M15-Master-Template" version="1.0.7"/>
     </Resources>
     <Layers>
         <Selector>
@@ -728,29 +732,48 @@
                         </Or>
                     </Conditions>
                 </Group>
-                <Effect id="watermarks" name="brightness" amount="-15%">
-                    <Mask>
-                        <Selector>
-                            <Image src="${watermark}">
-                                <Conditions>
-                                    <FileExists src="${watermark}.png"/>
-                                </Conditions>
-                            </Image>
-                            <SVG src="${watermark}" x="1644" y="3420" width="1398" height="1015">
-                                <Conditions>
-                                    <FileExists src="${watermark}.svg"/>
-                                </Conditions>
-                            </SVG>
-                        </Selector>
-                    </Mask>
-                    <Conditions>
-                        <IsPresent key="watermark"/>
-                        <Or>
-                            <FileExists src="${watermark}.svg"/>
-                            <FileExists src="${watermark}.png"/>
-                        </Or>
-                    </Conditions>
-                </Effect>
+                <Selector id="watermarks">
+                    <Fork id="basics">
+                        <Image src="$join{colors}"/>
+                        <Conditions>
+                            <IsPresent key="proximity.mtg.types.basic"/>
+                            <IsEquals key="proximity.mtg.color_count" value="1"/>
+                        </Conditions>
+                        <Branches>
+                            <Branch id="flavor">
+                                <IsPresent key="flavor_text"/>
+                            </Branch>
+                            <Branch id="standard"/>
+                        </Branches>
+                    </Fork>
+                    <Effect name="brightness" amount="-15%">
+                        <CardModifier key="proximity.options.watermark" value="${set}">
+                            <IsEquals key="proximity.options.set_symbol_watermark"/>
+                            <IsEquals key="proximity.options.set_symbol_overrides_existing_watermark"/>
+                        </CardModifier>
+                        <Mask>
+                            <Selector>
+                                <Image src="${proximity.options.watermark}">
+                                    <Conditions>
+                                        <FileExists src="${proximity.options.watermark}.png"/>
+                                    </Conditions>
+                                </Image>
+                                <SVG src="${proximity.options.watermark}" x="1644" y="3420" width="1398" height="1015">
+                                    <Conditions>
+                                        <FileExists src="${proximity.options.watermark}.svg"/>
+                                    </Conditions>
+                                </SVG>
+                            </Selector>
+                        </Mask>
+                        <Conditions>
+                            <IsPresent key="proximity.options.watermark"/>
+                            <Or>
+                                <FileExists src="${proximity.options.watermark}.svg"/>
+                                <FileExists src="${proximity.options.watermark}.png"/>
+                            </Or>
+                        </Conditions>
+                    </Effect>
+                </Selector>
                 <Group id="oracle_text">
                     <Text id="mutate" value="$oracle_text{proximity.util.mutate_text}" x="400" y="2800" width="2488" height="500">
                         <Conditions>
@@ -838,7 +861,7 @@
                             <IsEquals key="proximity.mtg.types.creature"/>
                         </Conditions>
                     </Wrap>
-                    <Style font="MPlantin" italicFont="MPlantin-Italic" color="#000000" size="135"/>
+                    <Style font="MPlantin" italicFont="MPlantin-Italic" color="#000000" size="145"/>
                 </Group>
                 <Group id="bottom_text">
                     <HorizontalLayout id="set_lang_and_artist" x="335" y="4209">
