@@ -57,7 +57,7 @@
     </ConditionDefinitions>
     <Resources>
         <Resource type="assets" location="https://hephaestus.dev/proximity/resources/set_symbols" version="1.0.0"/>
-        <Resource type="assets" location="https://raw.githubusercontent.com/Proximity-Engine/M15-Master-Template" version="1.0.7"/>
+        <Resource type="assets" location="https://raw.githubusercontent.com/Proximity-Engine/M15-Master-Template" version="1.0.8"/>
     </Resources>
     <Layers>
         <Selector>
@@ -752,19 +752,21 @@
                     </Conditions>
                 </Group>
                 <Selector id="watermarks">
-                    <Fork id="basics">
-                        <Image src="$join{colors}" x="1644" y="3400" horizontal_alignment="middle" vertical_alignment="middle"/>
+                    <Selector id="basics">
+                        <Effect name="brightness" amount="-15%">
+                            <Mask>
+                                <Image src="flavor/$join{colors}" x="1644" y="3400" horizontal_alignment="middle" vertical_alignment="middle"/>
+                            </Mask>
+                            <Conditions>
+                                <IsPresent key="flavor_text"/>
+                            </Conditions>
+                        </Effect>
+                        <Image src="standard/$join{colors}" x="1644" y="3400" horizontal_alignment="middle" vertical_alignment="middle"/>
                         <Conditions>
                             <IsPresent key="proximity.mtg.types.basic"/>
                             <IsEquals key="proximity.mtg.color_count" value="1"/>
                         </Conditions>
-                        <Branches>
-                            <Branch id="flavor">
-                                <IsPresent key="flavor_text"/>
-                            </Branch>
-                            <Branch id="standard"/>
-                        </Branches>
-                    </Fork>
+                    </Selector>
                     <Effect name="brightness" amount="-15%">
                         <CardModifier key="proximity.options.watermark" value="${set}">
                             <IsEquals key="proximity.options.set_symbol_watermark"/>
