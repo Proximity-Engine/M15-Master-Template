@@ -3,7 +3,7 @@
 <Template name="M15 Master" author="ChilliAxe and Haven King" width="3288" height="4488"
           proximity_version="0.6.0"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:noNamespaceSchemaLocation="https://hephaestus.dev/proximity/template.xsd">
+          xsi:noNamespaceSchemaLocation="../../../template.xsd">
     <Options>
         <!-- Outline the text at the bottom of the card (copyright, artist credit, etc.) -->
         <ToggleOption id="bottom_text_outline" default="false"/>
@@ -57,7 +57,7 @@
     </ConditionDefinitions>
     <Resources>
         <Resource type="assets" location="https://hephaestus.dev/proximity/resources/set_symbols" version="1.0.0"/>
-        <Resource type="assets" location="https://raw.githubusercontent.com/Proximity-Engine/M15-Master-Template" version="1.0.8"/>
+        <Resource type="assets" location="https://raw.githubusercontent.com/Proximity-Engine/M15-Master-Template" version="1.0.9"/>
     </Resources>
     <Layers>
         <Selector>
@@ -438,7 +438,7 @@
                         </Branch>
                     </Branches>
                 </Fork>
-                <Selector id="crowns.companion.gems">
+                <Selector id="crowns.gems">
                     <Image id="monocolored" src="$join{colors}">
                         <Conditions>
                             <IsEquals key="proximity.mtg.color_count" value="1"/>
