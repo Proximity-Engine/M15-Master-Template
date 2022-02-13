@@ -906,12 +906,12 @@
                             </Text>
                             <Spacer height="5" width="26"/>
                             <Text id="artist" value="${artist}">
-                                <Style font="Beleren Small Caps" size="75" kerning="1.5"/>
+                                <Style font="Beleren2016-Bold" size="71" capitalization="all_caps" kerning="1"/>
                             </Text>
                         </HorizontalLayout>
                     </HorizontalLayout>
                     <Group id="disclaimer">
-                        <Text x="335" y="4131" value="2021 Custom Proxy">
+                        <Text x="335" y="4131" value="2022 Custom Proxy">
                             <Style font="Altone" size="70"/>
                         </Text>
                         <Text value="NOT FOR SALE" x="1010" y="4136">
@@ -919,7 +919,7 @@
                         </Text>
                     </Group>
                     <Selector id="copyright">
-                        <Text value="™ &amp; © 2021 Wizards of the Coast" alignment="right" x="2956" y="4207">
+                        <Text value="™ &amp; © 2022 Wizards of the Coast" alignment="right" x="2956" y="4207">
                             <Style font="MPlantin" size="68"/>
                             <Conditions>
                                 <Or>
@@ -929,7 +929,7 @@
                                 </Or>
                             </Conditions>
                         </Text>
-                        <Text value="™ &amp; © 2021 Wizards of the Coast" alignment="right" x="2956" y="4130">
+                        <Text value="™ &amp; © 2022 Wizards of the Coast" alignment="right" x="2956" y="4130">
                             <Style font="MPlantin" size="68"/>
                         </Text>
                         <Conditions>
