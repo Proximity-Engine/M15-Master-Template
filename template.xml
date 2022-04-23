@@ -605,13 +605,35 @@
                         <Selector id="name">
                             <Selector id="dfc">
                                 <Text x="665" y="506" value="${name}">
+                                    <AttributeModifier name="y" value="516">
+                                        <Or>
+                                            <IsEquals key="lang" value="zhs"/>
+                                            <IsEquals key="lang" value="zht"/>
+                                        </Or>
+                                    </AttributeModifier>
                                     <Style font="Beleren2016-Bold" color="#000000" size="160"/>
+                                    <Style font="MaShanZheng-Regular" italicFont="MaShanZheng-Regular" color="#000000" size="170">
+                                        <Conditions>
+                                            <Or>
+                                                <IsEquals key="lang" value="zhs"/>
+                                                <IsEquals key="lang" value="zht"/>
+                                            </Or>
+                                        </Conditions>
+                                    </Style>
                                     <Conditions>
                                         <IsEquals key="proximity.mtg.front_face"/>
                                     </Conditions>
                                 </Text>
                                 <Text x="665" y="506" value="${name}">
                                     <Style font="Beleren2016-Bold" color="#FFFFFF" size="160"/>
+                                    <Style font="MaShanZheng-Regular" italicFont="MaShanZheng-Regular" color="#FFFFFF" size="170">
+                                        <Conditions>
+                                            <Or>
+                                                <IsEquals key="lang" value="zhs"/>
+                                                <IsEquals key="lang" value="zht"/>
+                                            </Or>
+                                        </Conditions>
+                                    </Style>
                                     <Conditions>
                                         <IsEquals key="proximity.mtg.front_face" value="false"/>
                                     </Conditions>
@@ -626,6 +648,14 @@
                             </Selector>
                             <Text x="380" y="506" value="${name}">
                                 <Style font="Beleren2016-Bold" color="#000000" size="160"/>
+                                <Style font="MaShanZheng-Regular" italicFont="MaShanZheng-Regular" color="#000000" size="170">
+                                    <Conditions>
+                                        <Or>
+                                            <IsEquals key="lang" value="zhs"/>
+                                            <IsEquals key="lang" value="zht"/>
+                                        </Or>
+                                    </Conditions>
+                                </Style>
                             </Text>
                         </Selector>
                     </Flex>
@@ -678,6 +708,12 @@
                                     <IsPresent key="color_indicator"/>
                                     <FileExists src="~/overlays/color_indicators/$join{color_indicator}.png"/>
                                 </AttributeModifier>
+                                <AttributeModifier name="y" value="2675">
+                                    <Or>
+                                        <IsEquals key="lang" value="zhs"/>
+                                        <IsEquals key="lang" value="zht"/>
+                                    </Or>
+                                </AttributeModifier>
                             </Text>
                             <Style font="Beleren2016-Bold" color="#000000" size="135" kerning="2"/>
                             <Style font="Beleren2016-Bold" color="#FFFFFF" size="135" kerning="2">
@@ -688,6 +724,14 @@
                                         <IsEquals key="layout" value="transform"/>
                                     </Or>
                                     <IsEquals key="proximity.mtg.front_face" value="false"/>
+                                </Conditions>
+                            </Style>
+                            <Style font="MaShanZheng-Regular" italicFont="MaShanZheng-Regular" size="145">
+                                <Conditions>
+                                    <Or>
+                                        <IsEquals key="lang" value="zhs"/>
+                                        <IsEquals key="lang" value="zht"/>
+                                    </Or>
                                 </Conditions>
                             </Style>
                         </Selector>
@@ -796,7 +840,7 @@
                     </Effect>
                 </Selector>
                 <Group id="oracle_text">
-                    <Text id="mutate" value="$oracle_text{proximity.util.mutate_text}" x="400" y="2800" width="2488" height="500">
+                    <Text id="mutate" value="$oracle_text{proximity.mtg.mutate_text}" x="400" y="2800" width="2488" height="500">
                         <Conditions>
                             <IsPresent key="keywords.mutate"/>
                         </Conditions>
@@ -832,7 +876,7 @@
                             </Conditions>
                         </Text>
                         <VerticalLayout id="flavor">
-                            <VerticalLayout>
+                            <VerticalLayout id="separator">
                                 <Spacer id="spacing1" width="10" height="75"/>
                                 <Selector>
                                     <Image x="36" src="~/overlays/flavor_bar">
@@ -855,6 +899,14 @@
                                 <IsPresent key="flavor_text"/>
                                 <IsEquals key="proximity.options.flavor_text"/>
                             </Conditions>
+                            <Style font="gangjian-handwriting" italicFont="gangjian-handwriting" color="#000000" size="133">
+                                <Conditions>
+                                    <Or>
+                                        <IsEquals key="lang" value="zhs"/>
+                                        <IsEquals key="lang" value="zht"/>
+                                    </Or>
+                                </Conditions>
+                            </Style>
                         </VerticalLayout>
                     </VerticalLayout>
                     <Wrap>
@@ -883,6 +935,19 @@
                         </Conditions>
                     </Wrap>
                     <Style font="MPlantin" italicFont="MPlantin-Italic" color="#000000" size="145"/>
+                    <Style font="MPlantin" italicFont="MPlantin-Italic" color="#000000" size="120">
+                        <Conditions>
+                            <IsPresent key="keywords.mutate"/>
+                        </Conditions>
+                    </Style>
+                    <Style font="NotoSansSC-Light" italicFont="NotoSansSC-Light" color="#000000" size="145">
+                        <Conditions>
+                            <Or>
+                                <IsEquals key="lang" value="zhs"/>
+                                <IsEquals key="lang" value="zht"/>
+                            </Or>
+                        </Conditions>
+                    </Style>
                 </Group>
                 <Group id="bottom_text">
                     <HorizontalLayout id="set_lang_and_artist" x="335" y="4209">
