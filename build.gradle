@@ -7,7 +7,7 @@ plugins {
 }
 
 group 'dev.hephaestus.proximity'
-version '1.0.1-SNAPSHOT'
+version '1.1.0-SNAPSHOT'
 
 javafx {
     version = "19"
@@ -20,18 +20,18 @@ repositories {
         name = 'Quilt'
         url = 'https://maven.quiltmc.org/repository/release'
     }
+    mavenLocal()
     maven {
         url = "https://hephaestus.dev/snapshot"
     }
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-    implementation 'com.google.guava:guava:31.0.1-jre'
-    implementation 'dev.hephaestus.proximity:application:1.0.0-SNAPSHOT'
-    implementation 'dev.hephaestus.proximity:mtg:1.0.0-SNAPSHOT'
-    implementation 'dev.hephaestus.proximity:scryfall:1.0.0-SNAPSHOT'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+    implementation 'dev.hephaestus.proximity:application:1.2.0-SNAPSHOT'
+    implementation 'dev.hephaestus.proximity:mtg:1.2.0-SNAPSHOT'
+    implementation 'dev.hephaestus.proximity:scryfall:1.2.0-SNAPSHOT'
     implementation 'dev.hephaestus.proximity:json:1.0.0-SNAPSHOT'
     implementation 'org.quiltmc:quilt-json5:1.0.0'
 }
